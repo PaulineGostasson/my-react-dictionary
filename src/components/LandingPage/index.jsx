@@ -91,6 +91,7 @@ const LandingPage = ({ initialValue = "" }) => {
         </form>
       </Box>
       <IconButton
+      data-testid="bookmarkLib-button"
         to="/bookmarks"
         component={Link}
         sx={{

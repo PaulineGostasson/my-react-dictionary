@@ -17,7 +17,7 @@ import {
 
 import { useParams, useNavigate } from "react-router-dom";
 
-import axios from "axios"; // axios is a JS lib used to make HTTP requests from node from the browser
+import axios from "axios"; 
 
 import styled from "@emotion/styled"; // @emotion/styled is also an additional package which make it possible to create react comp that has styles attached to them
 
@@ -26,7 +26,7 @@ const AlignCenterBox = styled(Box)(({ theme }) => ({
 }));
 
 const Definition = ({ bookmarks, addBookmark, removeBookmark }) => {
-  const { word } = useParams(); // access word param or parameter from the Url with useParams
+  const { word } = useParams(); 
   const navigate = useNavigate();
   const [definitions, setDefinitions] = useState([]);
   const [exist, setExist] = useState(true);
@@ -46,7 +46,7 @@ const Definition = ({ bookmarks, addBookmark, removeBookmark }) => {
   };
 
 
-  // here we fetch definition from out free api /word
+  // here we fetch definition from our free api /word
   useEffect(() => {
     const fetchDefinition = async () => {
       try {
@@ -95,10 +95,10 @@ const Definition = ({ bookmarks, addBookmark, removeBookmark }) => {
         // if the array isn't empty it will display the following code
         <>
           <Stack direction="row" justifyContent="space-between">
-            <IconButton onClick={goBack}>
+            <IconButton onClick={goBack}data-testid="goBack-button"> 
               <BackIcon sx={{ color: "darkblue" }} />
             </IconButton>
-            <IconButton onClick={toggleBookmark}>
+            <IconButton onClick={toggleBookmark} data-testid="bookmark-button">
               {isBookmarked ? (
                 <BookmarkedIcon sx={{ color: "darkblue" }} />
               ) : (
@@ -126,7 +126,7 @@ const Definition = ({ bookmarks, addBookmark, removeBookmark }) => {
             </Typography>
             {audio && (
               <IconButton
-                onClick={() => audio.play()}
+                onClick={() => audio.play()}data-testid="audio-button"
                 sx={{
                   borderRadius: 1,
                   p: 1.3, // p = padding
@@ -139,6 +139,7 @@ const Definition = ({ bookmarks, addBookmark, removeBookmark }) => {
             )}
           </Stack>
           {definitions.map((def, idx) => (
+            
             <Box
               key={idx}
               sx={{
@@ -154,6 +155,7 @@ const Definition = ({ bookmarks, addBookmark, removeBookmark }) => {
       the variable (def) will be displayed such as noun etc.
     */}
               <Typography
+              data-testid="def-list"
                 sx={{ textTransform: "capitalize" }}
                 color="GrayText"
                 variant="subtitle" // we fetch the subtitle from my custom theme.js
@@ -167,6 +169,7 @@ const Definition = ({ bookmarks, addBookmark, removeBookmark }) => {
                   // idx only represents the index of definition/s array
                   // in this typography( prop associated with UI variants with semantic elem )
                   <Typography
+                  data-testid="def-list"
                     sx={{ my: 2 }} // my = margin top
                     variant="body2"
                     color="GrayText"

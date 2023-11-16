@@ -43,6 +43,11 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^13.3.0"
-  }
+    "cypress": "^13.5.1"
+  },
+  "description": "A react app dictionary created with free Dictionary Api",
+  "main": "cypress.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
